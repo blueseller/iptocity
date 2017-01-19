@@ -1,0 +1,13 @@
+// $Id$
+// vim:ft=javascript
+
+// If your extension references something external, use ARG_WITH
+// ARG_WITH("iptocity", "for iptocity support", "no");
+
+// Otherwise, use ARG_ENABLE
+// ARG_ENABLE("iptocity", "enable iptocity support", "no");
+
+if (PHP_IPTOCITY != "no") {
+	EXTENSION("iptocity", "iptocity.c");
+}
+

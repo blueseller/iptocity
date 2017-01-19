@@ -1,0 +1,8 @@
+iptocity.lo: /tmp/iptocity/iptocity.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/tmp/iptocity $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /tmp/iptocity/iptocity.c -o iptocity.lo 
+$(phplibdir)/iptocity.la: ./iptocity.la
+	$(LIBTOOL) --mode=install cp ./iptocity.la $(phplibdir)
+
+./iptocity.la: $(shared_objects_iptocity) $(IPTOCITY_SHARED_DEPENDENCIES)
+	$(LIBTOOL) --mode=link $(CC) $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) $(LDFLAGS) -o $@ -export-dynamic -avoid-version -prefer-pic -module -rpath $(phplibdir) $(EXTRA_LDFLAGS) $(shared_objects_iptocity) $(IPTOCITY_SHARED_LIBADD)
+
